@@ -43,10 +43,17 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64</td>
+              <td>win_64_variantdefault</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=10608&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libmamba-feedstock?branchName=master&jobName=win&configuration=win_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libmamba-feedstock?branchName=master&jobName=win&configuration=win_64_variantdefault" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_variantmingw</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=10608&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libmamba-feedstock?branchName=master&jobName=win&configuration=win_64_variantmingw" alt="variant">
                 </a>
               </td>
             </tr>
@@ -62,7 +69,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libmamba-green.svg)](https://anaconda.org/conda-forge/libmamba) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libmamba.svg)](https://anaconda.org/conda-forge/libmamba) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libmamba.svg)](https://anaconda.org/conda-forge/libmamba) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libmamba.svg)](https://anaconda.org/conda-forge/libmamba) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-clangdev-green.svg)](https://anaconda.org/conda-forge/clangdev) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/clangdev.svg)](https://anaconda.org/conda-forge/clangdev) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/clangdev.svg)](https://anaconda.org/conda-forge/clangdev) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/clangdev.svg)](https://anaconda.org/conda-forge/clangdev) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libmamba_variant-green.svg)](https://anaconda.org/conda-forge/libmamba_variant) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libmamba_variant.svg)](https://anaconda.org/conda-forge/libmamba_variant) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libmamba_variant.svg)](https://anaconda.org/conda-forge/libmamba_variant) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libmamba_variant.svg)](https://anaconda.org/conda-forge/libmamba_variant) |
 
 Installing libmamba
 ===================
@@ -73,16 +81,16 @@ Installing `libmamba` from the `conda-forge` channel can be achieved by adding `
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `libmamba` can be installed with:
+Once the `conda-forge` channel has been enabled, `clangdev, libmamba_variant` can be installed with:
 
 ```
-conda install libmamba
+conda install clangdev libmamba_variant
 ```
 
-It is possible to list all of the versions of `libmamba` available on your platform with:
+It is possible to list all of the versions of `clangdev` available on your platform with:
 
 ```
-conda search libmamba --channel conda-forge
+conda search clangdev --channel conda-forge
 ```
 
 

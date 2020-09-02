@@ -2,8 +2,17 @@
 {% set version = "0.5.1" %}
 {% set sha256 = "2c719d2fa623205672652cc21af15b052434ce5330fcbed01b4b921f22ba9e62" %}
 
+{% if not variant %}
+{% set variant = "default" %}
+{% endif %}
+
+{% if variant == "mingw" %}
+    {% set posix = 'm2-' if win else '' %}
+    {% set native = 'm2w64-' %}
+{% endif %}
+
 package:
-  name: {{ name|lower }}
+  name: libmamba_libmambavariant
   version: {{ version }}
 
 source:
@@ -12,21 +21,21 @@ source:
 
 build:
   number: 0
-  run_exports:
-    - {{ pin_subpackage(name, max_pin='x.x') }}
+
+# Specifying `compiler('cxx')` as a top-level build requirements to force
+# conda-smithy to generate the correct build matrix.
 requirements:
   build:
-    - cmake
-    - ninja
+{% if variant == "mingw" %}
+    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+{% else %}
     - {{ compiler('cxx') }}
-  host:
-    - libsolv >=0.7.14
-    - libcurl
-    - openssl
-    - libarchive
-    - libiconv
-    - nlohmann_json
-    - cpp-filesystem
+{% endif %}
 
 test:
   commands:
@@ -37,6 +46,58 @@ test:
     - if exist %LIBRARY_INC%\mamba\context.hpp (exit 0) else (exit 1)  # [win]
     - if exist %LIBRARY_LIB%\mamba.lib (exit 0) else (exit 1)  # [win]
     - if exist %LIBRARY_BIN%\mamba.dll (exit 0) else (exit 1)  # [win]
+
+outputs:
+  # Main output
+  - name: libmamba 
+    version: {{ version }}
+    script: build_mamba.sh  # [unix]
+    script: build_mamba.bat  # [win]
+    build:
+      number: 0
+      run_exports:
+        - {{ pin_subpackage(name, max_pin='x.x') }}
+    requirements:
+      build:
+        - cmake
+        - ninja
+    {% if variant == "mingw" %}
+        - {{ compiler('m2w64_cxx') }}  # [win]
+        - {{ posix }}filesystem        # [win]
+        - {{ posix }}make
+        - {{ posix }}sed               # [win]
+        - {{ posix }}coreutils         # [win]
+        - {{ posix }}zip               # [win]
+    {% else %}
+        - {{ compiler('cxx') }}
+    {% endif %}
+
+      host:
+        - libsolv >=0.7.14
+        - libcurl
+        - openssl
+        - libarchive
+        - libiconv
+        - nlohmann_json
+        - cpp-filesystem
+    {% if variant == "mingw" %}
+        - {{ native }}gcc-libs         # [win]
+    {% endif %}
+
+      run:
+        # Require the mutex package.
+        - libmamba_variant * {{ variant }}
+
+  # Mutex package
+  # The mingw variant track the "libmamba_mingw" feature.
+  - name: libmamba_variant
+    version: 1.0
+    build:
+      string: {{ variant }}
+    {% if variant == "mingw" %}
+      track_features:
+        - libmamba_mingw
+    {% endif %}
 
 about:
   home: https://github.com/TheSnakePit/mamba
