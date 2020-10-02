@@ -27,6 +27,7 @@ requirements:
     - libiconv
     - nlohmann_json
     - cpp-filesystem
+    - yaml-cpp
 
 test:
   commands:
