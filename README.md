@@ -5,9 +5,11 @@ Home: https://github.com/TheSnakePit/mamba
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libmamba-feedstock/blob/master/LICENSE.txt)
 
 Summary: A library that exposes the internals of mamba, a fast drop-in alternative to conda
+
+Development: https://github.com/TheSnakePit/mamba
 
 A fast drop-in alternative to conda, using libsolv for dependency resolution
 
