@@ -1,6 +1,6 @@
 {% set name = "libmamba" %}
-{% set version = "0.5.3" %}
-{% set sha256 = "2c1db1eb1b762a673c7e2aba06c3f7586c1fe2a9c941a8c01b9663ed4ce54196" %}
+{% set version = "0.7.0" %}
+{% set sha256 = "e01a6f77a7c5d49b35033307360bbd22c34560b9ef21048bc742bf644692bddc" %}
 
 package:
   name: {{ name|lower }}
