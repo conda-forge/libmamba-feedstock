@@ -35,8 +35,8 @@ test:
     - test -f $PREFIX/include/mamba/core/channel.hpp  # [unix]
     - if not exist %LIBRARY_INC%\mamba\core\channel.hpp (exit 1)  # [win]
     - if not exist %LIBRARY_INC%\mamba\core\context.hpp (exit 1)  # [win]
-    - if not exist %LIBRARY_LIB%\mamba.lib (exit 1)  # [win]
-    - if not exist %LIBRARY_BIN%\mamba.dll (exit 1)  # [win]
+    - if not exist %LIBRARY_LIB%\libmamba.lib (exit 1)  # [win]
+    - if not exist %LIBRARY_BIN%\libmamba.dll (exit 1)  # [win]
 
 about:
   home: https://github.com/mamba-org/mamba
