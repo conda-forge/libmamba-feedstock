@@ -1,6 +1,6 @@
 mkdir build; cd build
 
-if [[ $target_platform == "linux-ppc64le" ]]; then
+if [[ "${target_platform}" == "linux-ppc64le" ]]; then
 	NJOBS="-j2"
 fi
 
