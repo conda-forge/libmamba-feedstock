@@ -1,5 +1,5 @@
 {% set name = "libmamba" %}
-{% set version = "0.15.3" %}
+{% set version = "0.17.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/mamba-org/mamba/archive/{{ version }}.tar.gz
-  sha256: f2ad92625954cd029b84725bc33f658020a589cefda0b18adb1b7825ab7d4a1f
+  sha256: c5f4add077f41ca9ff905d95003cf793c59e9d6959f19a139325dc66c904733a
 
 build:
   number: 0
