@@ -1,5 +1,5 @@
 {% set name = "libmamba" %}
-{% set version = "0.15.3" %}
+{% set version = "2022.04.21" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/mamba-org/mamba/archive/{{ version }}.tar.gz
-  sha256: f2ad92625954cd029b84725bc33f658020a589cefda0b18adb1b7825ab7d4a1f
+  sha256: f9e9799fb9cedbfbc018fc5f56ad419302aa5becf6fb4da84eccb8975aa97cc3
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
 requirements:
